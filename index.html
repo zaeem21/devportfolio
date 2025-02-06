@@ -5,65 +5,90 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Portfolio</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Zaeem Mazed</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <style>
+        .welcome-container {
+            position: relative;
+            width: 200px;
+            height: 50px;
+            background-color: transparent;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: background-color 0.3s;
+            border: 3px solid white;
+            margin: 20px auto;
+        }
+
+        .welcome-container:hover {
+            animation: flash 0.5s infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { background-color: transparent; }
+            50% { background-color: rgba(255, 255, 255, 0.2); }
+        }
+
+        .welcome-drop {
+            position: absolute;
+            top: 70px;
+            left: 80%;
+            bottom: 60%;
+            transform: translateX(-50%);
+            font-size: 35px;
+            color: goldenrod;
+            opacity: 50000;
+            animation: drop 2s ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes drop {
+            0% { top: -50px; opacity: 100; }
+            100% { top: 150px; opacity: 100; }
+        }
+    </style>
 </head>
 
 <body>
     <div id="mobile-menu-open" class="shadow-large">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-    <!-- End #mobile-menu-toggle -->
     <header>
         <div id="mobile-menu-close">
             <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <ul id="menu" class="shadow">
-            <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
-            <li>
-                <a href="#education">Education</a>
-            </li>
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
-            <li>
-                <a href="#skills">Skills</a>
-            </li>
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </header>
-    <!-- End header -->
 
     <div id="lead">
         <div id="lead-content">
-            <h1>Ryan Fitzgerald</h1>
-            <h2>Software Engineer</h2>
-            <a href="#" class="btn-rounded-white">Download Resume</a>
+            <h1>Zaeem Mazed</h1>
+            <h2>Data Scientist | Software Developer</h2>
+            <div class="welcome-container" id="welcomeBox">Welcome</div>
         </div>
-        <!-- End #lead-content -->
-
         <div id="lead-overlay"></div>
-
         <div id="lead-down">
-            <span>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </span>
+            <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
         </div>
-        <!-- End #lead-down -->
     </div>
-    <!-- End #lead -->
 
     <div id="about">
         <div class="container">
@@ -73,77 +98,126 @@
                 </div>
                 <div class="col-md-8">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat. Donec
-                        eu vehicula neque. Donec viverra lorem nunc, tempus euismod eros sollicitudin ut. Quisque et tincidunt libero. Donec id pharetra justo. Proin euismod lacinia dolor, eu scelerisque justo tempus pharetra. Vivamus nunc justo, finibus
-                        ut nisl sed, euismod rhoncus nulla. Proin sed magna egestas, egestas ante et, congue eros. In consequat, mauris dapibus tincidunt suscipit, ex libero aliquet diam, at maximus risus enim non leo.
+                        I am a passionate data scientist and software developer with over three years of experience helping businesses 
+                        unlock the value of their data. I specialize in data analytics, visualization, and machine learning, 
+                        bridging the gap between complex data and actionable business insights. I also have solid experience in software development, 
+                        working in multi-developer teams, using version control systems like Git, and conducting scrum meetings to deliver efficient, 
+                        scalable solutions. My work spans industries such as government contractors, real estate, textile sector and restaurants, 
+                        where I've driven impactful, data-informed decisions.
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End #about -->
+
+    <script>
+        const welcomeBox = document.getElementById('welcomeBox');
+
+        welcomeBox.addEventListener('mouseover', () => {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const welcomeText = document.createElement('div');
+                    welcomeText.classList.add('welcome-drop');
+                    welcomeText.innerText = 'Welcome';
+                    document.body.appendChild(welcomeText);
+
+                    const randomX = Math.random() * window.innerWidth;
+                    welcomeText.style.left = `${randomX}px`;
+
+                    setTimeout(() => {
+                        welcomeText.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
 
     <div id="experience" class="background-alt">
         <h2 class="heading">Experience</h2>
         <div id="experience-timeline">
-            <div data-date="September 2015 – September 2016">
-                <h3>Employer Name</h3>
-                <h4>Job Title</h4>
+            
+            <div data-date="July 2022 – Present">
+                <h3>InfoTech Solutions</h3>
+                <h4>Data Science & Business Intelligence Consultant</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                    Collaborated with businesses across industries such as restaurants, government contractors, real estate, and textiles to address challenges in customer insights, sales forecasting, and inventory management. Applied data analytics and machine learning teachniques and constructed dynamic real-time dashboards to uncover actionable insights, resulting in improved customer engagement and operational efficiency.
+
+        
                 </p>
+
+                <p> <br> Skills: Python, Machine Learning, Data Science, Sci-kit Learn, PyTorch, TensorFlow,Power BI, Tableau, SQL, PostgreSQL
+                </p>
+
             </div>
 
-            <div data-date="September 2015 – September 2016">
-                <h3>Employer Name</h3>
-                <h4>Job Title</h4>
+            <div data-date="September 2023 – Present">
+                <h3>Memorial University</h3>
+                <h4>Software Developer & Research Assistant</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                    Developed the Avalon Research Society website using HTML, CSS, JavaScript, and React to enhance the user 
+                    interface, resulting in a 25% increase in user interaction. Debugged existing code issues and migrated 
+                    the website to React, which improved site performance and loading efficiency by 20%. Conducted extensive 
+                    web scraping with BeautifulSoup to collect high-quality data, boosting research efficiency by 30% and supporting 
+                    key academic initiatives. Additionally, coordinated events and engaged with partners and potential clients for collaboration, 
+                    leading to the successful organization of 5+ research events and establishing 3 new academic partnerships.
                 </p>
+
+                <p> <br> Skills: HTML, CSS, JavaScript, React, Node.js, Express.js, MongoDB
+                </p>
+
             </div>
 
-            <div data-date="September 2015 – September 2016">
-                <h3>Employer Name</h3>
-                <h4>Job Title</h4>
+            <div data-date="January 2025 – January 2025">
+                <h3>British Airways</h3>
+                <h4>Data Science Intern</h4>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                    Implemented a data-driven project to analyze customer booking behaviour and identify the most common travel routes.
+                    Tasked with developing insights to optimize route management and improve customer retention strategies. 
+                    Utilized Python, Pandas, and Matplotlib to process and visualize large datasets, creating dynamic visualizations 
+                    to represent booking patterns, such as the most frequent routes from Vancouver to London and other key cities. 
+                    These insights provided actionable recommendations for route optimization, contributing to better resource allocation 
+                    and enhanced customer satisfaction
+                </p>
+
+                <p> <br> Skills: Python, NLTK, HuggingFace,Pandas, Matplotlib, Seaborn, Sci-Kit Learn, Web Scraping, Data Cleaning, Data Manipulation.
+                </p>
+
+            </div>
+
+            <div data-date="September 2023 – May 2024">
+                <h3>Loblaws Companies Ltd.</h3>
+                <h4>Data-Sales Mobilist</h4>
+                <p>
+                    Spearheaded the sales strategy for the mobility sector, addressing stagnating growth and inefficiencies in sales
+                     processes. Tasked with leveraging data analytics to drive sales performance and optimize strategies. Utilized 
+                     advanced data analysis and CRM tools such as Power BI, Salesforce, and StatFlow to uncover key market trends
+                      and customer insights, leading to the development of targeted sales strategies. This data-driven approach 
+                      resulted in a 55% increase in sales within the mobility sector. Additionally, organized sales events and networking 
+                      initiatives, applying project management techniques and fostering team collaboration, which directly contributed to 
+                      achieving and exceeding monthly sales targets. 
+                </p>
+
+                <p><br>Skills: Power BI, Salesforce, StatFlow, team collaboration, Customer Insights </p>
+            </div>
+
+            <div data-date="September 2023 – May 2024">
+                <h3>Software Developer</h3>
+                <h4>Eastern Edge Robotics</h4>
+                <p>
+                    Integrated GUI for cameras for a submersible robot using TypeScript, React, Python, and HTML/CSS, resulting in a 30% increase in code efficiency and reduced video lag.
+                    Collaborated with a team of developers, conducting regular scrum meetings and utilizing version control to ensure efficient project progression and maintain high-quality code standards.
+                </p>
+
+                <p>
+                    <br>Skills: TypeScript, HTML, CSS, Python, Git
                 </p>
             </div>
         </div>
     </div>
-    <!-- End #experience -->
 
-    <div id="education">
-        <h2 class="heading">Education</h2>
-        <div class="education-block">
-            <h3>University of Ottawa</h3>
-            <span class="education-date">Sept 2016 - Sept 2017</span>
-            <h4>Bachelor of Science in Computer Science</h4>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
-            </p>
-        </div>
-        <!-- End .education-block -->
-
-        <div class="education-block">
-            <h3>University of Ottawa</h3>
-            <span class="education-date">Sept 2016 - Sept 2017</span>
-            <h4>Bachelor of Science in Computer Science</h4>
-            <ul>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-            </ul>
-        </div>
-        <!-- End .education-block -->
-    </div>
-    <!-- End #education -->
 
     <div id="projects" class="background-alt">
         <h2 class="heading">Projects</h2>
@@ -151,15 +225,15 @@
             <div class="row">
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/project.jpg" />
+                        <img src="images/sent.png" height = 300 width = 300 />
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
-                        <h3>Project Name Here</h3>
+                        <h3>Transformer Based Sentiment Analysis For E-Commerce Insight</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                            Developed an AI-driven sentiment analysis tool to efficiently process over 500,000 Amazon reviews, providing businesses with real-time, actionable insights into customer feedback. By improving classification accuracy by 20% using RoBERTa and reducing manual review time by 50%, this tool enables companies to quickly identify customer sentiments, trends, and pain points. The scalable platform, combined with a user-friendly GUI, makes it accessible to non-technical teams, empowering marketing, customer service, and product development departments to make data-driven decisions that enhance customer satisfaction and drive business growth.
                         </p>
-                        <a href="#">View Project</a>
+                        <a href="https://github.com/zaeem21/Sentiment-Analysis-on-Amazon-Reviews">View Project</a>
                     </div>
                     <!-- End .project-info -->
                 </div>
@@ -167,15 +241,45 @@
 
                 <div class="project shadow-large">
                     <div class="project-image">
-                        <img src="images/project.jpg" />
+                        <img src="images/sales.png" height = 300 width = 300 />
                     </div>
                     <!-- End .project-image -->
                     <div class="project-info">
-                        <h3>Project Name Here</h3>
+                        <h3>AI Sales Predictor</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
+                            Developed a machine learning-based sales forecasting model to help businesses accurately predict future sales and optimize resource allocation. By leveraging Python for extensive data preprocessing with Pandas and NumPy, data quality was improved, resulting in a 35% increase in forecasting accuracy. Advanced machine learning techniques were applied using Scikit-learn, and the model’s reliability was validated through RMSE and R² metrics. This forecasting tool enables businesses to make informed decisions on inventory management, budgeting, and marketing strategies, ultimately enhancing operational efficiency and driving revenue growth.
                         </p>
-                        <a href="#">View Project</a>
+                        <a href="https://github.com/zaeem21/Data-Driven-Market-Analysis-Tool">View Project</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/tic.png" width = 300 height = 300 />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>Ultimate Tic-Tac-Toe</h3>
+                        <p>
+                            Developed an advanced Ultimate Tic-Tac-Toe application designed to enhance user engagement and deliver a challenging gaming experience. Leveraged GitHub for version control in a multi-developer environment and conducted scrum meetings, fostering collaboration and efficient workflow management. The front-end was built using sophisticated HTML and CSS techniques, while Python, Flask, and SQL were utilized for robust back-end functionality and effective session management. Integrated AI-driven computer strategies, resulting in a 75% increase in game difficulty, offering users a more dynamic and engaging experience. This project showcases the seamless integration of AI with interactive web applications, highlighting practical applications in both software development and game design.
+                        </p>
+                        <a href="https://github.com/CS2005W24/term-project-teamo.git">View Project</a>
+                    </div>
+                    <!-- End .project-info -->
+                </div>
+                <!-- End .project -->
+                <div class="project shadow-large">
+                    <div class="project-image">
+                        <img src="images/pdf.png" width = 300 height = 300 />
+                    </div>
+                    <!-- End .project-image -->
+                    <div class="project-info">
+                        <h3>TalkWave</h3>
+                        <p>
+                            Developed a Python-based automation tool, TalkWave, designed to convert PDF documents into clear, natural-sounding speech. Utilizing pyPDF2 for text extraction and Google Text-to-Speech (gTTS) for audio generation, the software delivers accurate speech output with a natural voice tone, making it a valuable resource for individuals with visual impairments, busy professionals, and those seeking hands-free document review. Implemented a user-friendly GUI using Tkinter, ensuring an intuitive and visually appealing interface that enhances accessibility for non-technical users. This project highlights the practical application of Python in creating assistive technologies and improving user experience through automation.
+                        </p>
+                        <a href="https://github.com/zaeem21/PDFtoMP3.git">View Project</a>
                     </div>
                     <!-- End .project-info -->
                 </div>
@@ -188,36 +292,46 @@
     <div id="skills">
         <h2 class="heading">Skills</h2>
         <ul>
-            <li>JavaScript</li>
             <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
-            <li>React</li>
-            <li>Elixir</li>
+            <li>Sci-kit Learn</li>
+            <li>PyTorch</li>
+            <li>TensorFlow</li>
+            <li>NLTK</li>
+            <li>Pandas</li>
+            <li>Numpy</li>
+            <li>Matplotlib</li>
+            <li>Seaborn</li>
+            <li>SQL</li>
+            <li>PostgreSQL</li>
+            <li>FastAPI</li>
+            <li>Tkinter</li>
             <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
             <li>JavaScript</li>
-            <li>Python</li>
-            <li>Ruby</li>
-            <li>Go</li>
-            <li>Node.js</li>
-            <li>AngularJs</li>
             <li>React</li>
-            <li>Elixir</li>
-            <li>Java</li>
-            <li>C</li>
-            <li>C#</li>
-            <li>C++</li>
-            <li>Ruby on Rails</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Node.js</li>
+            <li>MongoDB</li>
+            <li>Git</li>
+            <li>Scrum Master</li>
+            <li>Data Analytics</li>
+            <li>Machine Learning</li>
         </ul>
     </div>
     <!-- End #skills -->
 
+    <!-- Education block-->
+    <div id="education">
+        <h2 class="heading">Education</h2>
+        <div class="education-block">
+            <h3>Memorial University of Newfounland</h3>
+            <span class="education-date">September 2020 - April 2025</span>
+            <h4>Bachelor of Science in Computer Science</h4>
+        </div>
+        <!-- End .education-block -->
+
+    </div>
+    <!-- Education block-->
     <div id="contact">
         <h2>Get in Touch</h2>
         <div id="contact-form">
@@ -237,7 +351,7 @@
             <div class="row">
                 <div class="col-sm-5 copyright">
                     <p>
-                        Copyright &copy; <span id="current-year">2022</span> YOUR NAME
+                        Copyright &copy; <span id="current-year">2025</span> Zaeem Mazed
                     </p>
                 </div>
                 <div class="col-sm-2 top">
@@ -248,22 +362,17 @@
                 <div class="col-sm-5 social">
                     <ul>
                         <li>
-                            <a href="https://github.com/" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            <a href="https://github.com/zaeem21" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a href="https://stackoverflow.com/" target="_blank"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>
                         </li>
                         <li>
-                            <a href="https://linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/zaeem-mazed/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </li>
+
+                        <li>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                 </div>
